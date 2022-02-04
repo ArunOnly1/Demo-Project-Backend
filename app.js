@@ -18,7 +18,7 @@ app.use(
   cors({
     origin: [
       'http://localhost:3000',
-      'https://arunchapagain-ebpearls.netlify.app/',
+      'https://arunchapagain-ebpearls.netlify.app',
     ],
     credentials: true,
     exposedHeaders: ['refreshtoken', 'accesstoken'],
