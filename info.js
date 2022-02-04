@@ -18,3 +18,8 @@
 //     availability-time
 
 // }
+
+
+//Generating secret key
+//node -e "console.log(require('crypto').randomBytes(256).toString('base64'));"
+
