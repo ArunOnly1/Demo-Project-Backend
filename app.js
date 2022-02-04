@@ -14,36 +14,36 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
-// app.use(
-//   cors({
-//     origin: [
-//       'http://localhost:3000',
-//       'https://arunchapagain-ebpearls.netlify.app',
-//     ],
-//     credentials: true,
-//     exposedHeaders: ['refreshtoken', 'accesstoken'],
-//   })
-// )
+app.use(
+  cors({
+    origin: [
+      'http://localhost:3000',
+      'https://arunchapagain-ebpearls.netlify.app',
+    ],
+    credentials: true,
+    exposedHeaders: ['refreshtoken', 'accesstoken'],
+  })
+)
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  // res.setHeader('Access-Control-Allow-Origin', 'http://shikshya.crews.draftserver.com:5025');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-  )
+// app.use((req, res, next) => {
+//   res.setHeader('Access-Control-Allow-Origin', '*')
+//   // res.setHeader('Access-Control-Allow-Origin', 'http://shikshya.crews.draftserver.com:5025');
+//   res.header(
+//     'Access-Control-Allow-Headers',
+//     'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+//   )
 
-  if (req.method === 'OPTIONS') {
-    res.header('Access-Control-Expose-Headers', 'accessToken, refreshToken,')
-    res.header(
-      'Access-Control-Allow-Methods',
-      'PUT, POST, PATCH, DELETE, GET, OPTIONS'
-    )
-    return res.status(200).json({})
-  }
+//   if (req.method === 'OPTIONS') {
+//     res.header('Access-Control-Expose-Headers', 'accessToken, refreshToken,')
+//     res.header(
+//       'Access-Control-Allow-Methods',
+//       'PUT, POST, PATCH, DELETE, GET, OPTIONS'
+//     )
+//     return res.status(200).json({})
+//   }
 
-  return next()
-})
+//   return next()
+// })
 db_connect()
 
 app.use((req, res, next) => {
